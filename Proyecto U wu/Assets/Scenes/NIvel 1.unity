@@ -7743,6 +7743,62 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30a763d34d42ed34b963028a38cbb7fa, type: 3}
+--- !u!1 &1143305307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1143305308}
+  m_Layer: 0
+  m_Name: posicionGenerar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1143305308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143305307}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.598, y: -0.311, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1155748153}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1155748146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6391976228977360620, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
+  m_PrefabInstance: {fileID: 5537107799963004557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1155748153 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7951950865513134318, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
+  m_PrefabInstance: {fileID: 5537107799963004557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1155748154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155748146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe4eafeda5763946aa905f6c33c14f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posicionGenerar: {fileID: 1143305308}
+  balaPrefab: {fileID: 7712002081199434945, guid: f16d66b2fca2548488279cbdaf032a1c, type: 3}
+  fuerzaBala: 20
 --- !u!4 &1158888016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5700566460677883528, guid: 30a763d34d42ed34b963028a38cbb7fa, type: 3}
@@ -15479,8 +15535,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7951950865513134318, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1143305308}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6391976228977360620, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1155748154}
   m_SourcePrefab: {fileID: 100100000, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
 --- !u!1001 &5968827741523966453
 PrefabInstance:
