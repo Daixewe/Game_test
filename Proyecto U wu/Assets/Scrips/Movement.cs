@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Movement : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movementDirection;
     public int vida = 5;
+    public int scenceBuildIndex;
 
     void Start()
     {
@@ -33,8 +36,10 @@ public class Movement : MonoBehaviour
         if (vida <= 0)
         {
             gameObject.SetActive(false);
-            //Destroy(gameObject);
+            SceneManager.LoadScene(scenceBuildIndex, LoadSceneMode.Single);
 
         }
     }
+    
+    
 }

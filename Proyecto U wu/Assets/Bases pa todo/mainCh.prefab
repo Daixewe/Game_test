@@ -293,6 +293,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+  vida: 5
+  scenceBuildIndex: 10
 --- !u!114 &2843485061343042992
 MonoBehaviour:
   m_ObjectHideFlags: 0
