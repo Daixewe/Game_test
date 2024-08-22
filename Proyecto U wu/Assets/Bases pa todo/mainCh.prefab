@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 8188362318925810522}
   - component: {fileID: 7387595359488704575}
   - component: {fileID: 8981075470249376475}
+  - component: {fileID: 8983104204821679052}
   - component: {fileID: 2843485061343042992}
   - component: {fileID: 7960987430540454986}
   m_Layer: 0
@@ -293,7 +294,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  vida: 5
+--- !u!114 &8983104204821679052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6391976228977360620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6e483ec599c8240906dd98ccfa0162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  MaxHealth: 1
   scenceBuildIndex: 10
 --- !u!114 &2843485061343042992
 MonoBehaviour:

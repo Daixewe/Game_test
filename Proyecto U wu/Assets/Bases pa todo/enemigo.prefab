@@ -133,4 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c2788698b7bf2f44b62cf75ef5bbb2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 8983104204821679052, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
+  damage: 0
   vida: 5
+  velocidadMovimiento: 2
+  jugador: {fileID: 0}

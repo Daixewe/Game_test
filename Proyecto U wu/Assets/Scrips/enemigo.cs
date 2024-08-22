@@ -4,8 +4,26 @@ using UnityEngine;
 
 public class enemigo : MonoBehaviour
 {
+    public PlayerHealth playerHealth;
+    public int damage = 2;
+
+
     public int vida = 5;
-    private GameObject jugador;
+    public float velocidadMovimiento = 5f;
+    public GameObject jugador;
+
+    private void Start()
+    {
+        jugador = GameObject.FindWithTag("Player");
+
+
+    }
+
+    private void Update()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, jugador.transform.position, velocidadMovimiento * Time.deltaTime);
+    }
+
 
 
     public void BajarVida()
@@ -17,6 +35,15 @@ public class enemigo : MonoBehaviour
             Destroy(gameObject);
 
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerHealth.TakeDamage(damage);
+        }
+
     }
 
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bala : MonoBehaviour
 {
+
     public GameObject explosionPrefab;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -12,10 +13,7 @@ public class Bala : MonoBehaviour
         {
             collision.gameObject.GetComponent<enemigo>().BajarVida();
         }
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponent<Movement>().BajarVida();
-        }
+       
         GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(explosion, 0.5f);
         Destroy(gameObject);
