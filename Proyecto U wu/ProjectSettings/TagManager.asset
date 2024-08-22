@@ -3,12 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - enemigo
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - enemigo
   - Water
   - UI
   - piso

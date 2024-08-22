@@ -8,9 +8,17 @@ public class Bala : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        //Destroy(explosion, 0.5f);
-        //Destroy(gameObject);
+        if(collision.gameObject.tag == "enemigo")
+        {
+            collision.gameObject.GetComponent<enemigo>().BajarVida();
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Movement>().BajarVida();
+        }
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(explosion, 0.5f);
+        Destroy(gameObject);
     }
 
 }
