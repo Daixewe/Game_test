@@ -14,7 +14,11 @@ public class DisparoEnemigo : MonoBehaviour
     public float tiempoRafaga = 0.2f;
     private bool atacando = false;
 
-    private void Start()
+    public int proyectilesPorBurst;
+    [Range(0, 359)] public float angleSpread;
+    public float distanciaInicio = 0.1f;
+
+    public void Start()
     {
         jugador = GameObject.FindGameObjectWithTag("Player");
     }
@@ -38,23 +42,55 @@ public class DisparoEnemigo : MonoBehaviour
     private IEnumerator Disparar()
     {
         atacando = true;
+        float anguloInicial;
+        float anguloActual;
+        float anguloIncremental;
+
+        ConoDeInfluencia(out anguloInicial, out anguloActual, out anguloIncremental);
         for (int i = 0; i < cantidadRafaga; i++)
         {
-            Vector2 direccionDisparo = jugador.transform.position - transform.position;
-            GameObject bala = Instantiate(balaPrefab, posicionGenerar.position, posicionGenerar.rotation);
-            Rigidbody2D rigidbody = bala.GetComponent<Rigidbody2D>();
-            bala.transform.right = direccionDisparo;
-            rigidbody.AddForce(bala.transform.right * fuerzaBala, ForceMode2D.Impulse);
-            Destroy(bala, 5);
-
+            for (int j = 0; j < proyectilesPorBurst; j++)
+            {
+                Vector2 posicion = EncontrarPosicionGenerarBala(anguloActual);
+                GameObject bala = Instantiate(balaPrefab, posicion, posicionGenerar.rotation);
+                Rigidbody2D rigidbody = bala.GetComponent<Rigidbody2D>();
+                bala.transform.right = bala.transform.position - transform.position;
+                rigidbody.AddForce(bala.transform.right * fuerzaBala, ForceMode2D.Impulse);
+                Destroy(bala, 5);
+                anguloActual += anguloIncremental;
+            }
+            anguloActual = anguloInicial;
             yield return new WaitForSeconds(tiempoRafaga);
-
+            ConoDeInfluencia(out anguloInicial, out anguloActual, out anguloIncremental);
         }
-        yield return new WaitForSeconds(tiempoEntreBala);
+        yield return new WaitForSeconds(tiempoEntreBala);      
         atacando = false;
-
     }
 
-   
+    private void ConoDeInfluencia(out float anguloInicialIn, out float anguloActualIn, out float anguloIncrementalIn)
+    {
+        Vector2 direccionDisparo = jugador.transform.position - transform.position;        
+        float angulo = Mathf.Atan2(direccionDisparo.y, direccionDisparo.x) * Mathf.Rad2Deg;
+        
+        anguloInicialIn = angulo;
+        anguloActualIn = angulo;
+        float mitadAngulo = 0f;
+        anguloIncrementalIn = 0f;
+        if (angleSpread != 0)
+        {
+            anguloActualIn = angleSpread / (proyectilesPorBurst - 1);
+            mitadAngulo = angleSpread / 2;
+            anguloInicialIn = angulo - mitadAngulo;           
+            anguloActualIn = anguloInicialIn;
+        }
+    }
+    private Vector2 EncontrarPosicionGenerarBala(float anguloActual)
+    {
+        float x = transform.position.x + distanciaInicio * Mathf.Cos(anguloActual * Mathf.Deg2Rad);
+        float y = transform.position.y + distanciaInicio * Mathf.Sin(anguloActual * Mathf.Deg2Rad);
+        Vector2 pos = new Vector2(x,y);
+        return pos;
+    }
+
 }
 
