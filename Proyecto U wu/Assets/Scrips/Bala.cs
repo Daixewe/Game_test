@@ -13,7 +13,11 @@ public class Bala : MonoBehaviour
         {
             collision.gameObject.GetComponent<enemigo>().BajarVida();
         }
-       
+        if (collision.gameObject.tag == "Jefe")
+        {
+            collision.gameObject.GetComponent<vidaJefe>().BajarVida();
+        }
+
         GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(explosion, 0.5f);
         Destroy(gameObject);
