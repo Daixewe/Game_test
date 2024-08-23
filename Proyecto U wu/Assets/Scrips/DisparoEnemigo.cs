@@ -39,6 +39,20 @@ public class DisparoEnemigo : MonoBehaviour
     }
 
 
+    private void ConoDeInfluencia(out float anguloInicialIn, out float anguloActualIn, out float anguloIncrementalIn)
+    {
+        Vector2 direccionDisparo = jugador.transform.position - transform.position;
+        float anguloBase = Mathf.Atan2(direccionDisparo.y, direccionDisparo.x) * Mathf.Rad2Deg;
+
+        anguloInicialIn = anguloBase - (angleSpread / 2); // Empieza en el extremo izquierdo del cono
+        anguloIncrementalIn = (angleSpread) / (proyectilesPorBurst - 1); // Espaciado uniforme
+        anguloActualIn = anguloInicialIn; // Inicia en el ángulo inicial
+
+        Debug.Log("Ángulo Base: " + anguloBase);
+        Debug.Log("Ángulo Inicial: " + anguloInicialIn);
+        Debug.Log("Incremento de Ángulo: " + anguloIncrementalIn);
+    }
+
     private IEnumerator Disparar()
     {
         atacando = true;
@@ -47,50 +61,39 @@ public class DisparoEnemigo : MonoBehaviour
         float anguloIncremental;
 
         ConoDeInfluencia(out anguloInicial, out anguloActual, out anguloIncremental);
+
         for (int i = 0; i < cantidadRafaga; i++)
         {
             for (int j = 0; j < proyectilesPorBurst; j++)
             {
-                Vector2 posicion = EncontrarPosicionGenerarBala(anguloActual);
-                GameObject bala = Instantiate(balaPrefab, posicion, posicionGenerar.rotation);
+                // Calcula la rotación usando el ángulo actual
+                Quaternion rotacionBala = Quaternion.Euler(0, 0, anguloActual);
+
+                // Calcula la posición donde se generará la bala
+                Vector2 posicionGeneracion = transform.position + (Vector3)(distanciaInicio * new Vector2(Mathf.Cos(anguloActual * Mathf.Deg2Rad), Mathf.Sin(anguloActual * Mathf.Deg2Rad)));
+
+                // Instancia la bala en la posición calculada con la rotación adecuada
+                GameObject bala = Instantiate(balaPrefab, posicionGeneracion, rotacionBala);
+
+                // Aplica la fuerza en la dirección correcta
                 Rigidbody2D rigidbody = bala.GetComponent<Rigidbody2D>();
-                bala.transform.right = bala.transform.position - transform.position;
                 rigidbody.AddForce(bala.transform.right * fuerzaBala, ForceMode2D.Impulse);
                 Destroy(bala, 5);
+
+                // Incrementa el ángulo para el siguiente proyectil
                 anguloActual += anguloIncremental;
             }
+
+            // Reinicia el ángulo para la próxima ráfaga
             anguloActual = anguloInicial;
             yield return new WaitForSeconds(tiempoRafaga);
-            ConoDeInfluencia(out anguloInicial, out anguloActual, out anguloIncremental);
         }
-        yield return new WaitForSeconds(tiempoEntreBala);      
+        yield return new WaitForSeconds(tiempoEntreBala);
         atacando = false;
     }
 
-    private void ConoDeInfluencia(out float anguloInicialIn, out float anguloActualIn, out float anguloIncrementalIn)
-    {
-        Vector2 direccionDisparo = jugador.transform.position - transform.position;        
-        float angulo = Mathf.Atan2(direccionDisparo.y, direccionDisparo.x) * Mathf.Rad2Deg;
-        
-        anguloInicialIn = angulo;
-        anguloActualIn = angulo;
-        float mitadAngulo = 0f;
-        anguloIncrementalIn = 0f;
-        if (angleSpread != 0)
-        {
-            anguloActualIn = angleSpread / (proyectilesPorBurst - 1);
-            mitadAngulo = angleSpread / 2;
-            anguloInicialIn = angulo - mitadAngulo;           
-            anguloActualIn = anguloInicialIn;
-        }
-    }
-    private Vector2 EncontrarPosicionGenerarBala(float anguloActual)
-    {
-        float x = transform.position.x + distanciaInicio * Mathf.Cos(anguloActual * Mathf.Deg2Rad);
-        float y = transform.position.y + distanciaInicio * Mathf.Sin(anguloActual * Mathf.Deg2Rad);
-        Vector2 pos = new Vector2(x,y);
-        return pos;
-    }
+
+
 
 }
 
