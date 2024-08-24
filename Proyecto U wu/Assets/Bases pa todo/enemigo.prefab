@@ -103,7 +103,7 @@ MonoBehaviour:
   damage: 1
   vida: 5
   velocidadMovimiento: 2
-  jugador: {fileID: 0}
+  jugador: {fileID: 6391976228977360620, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
 --- !u!95 &6479413475125844132
 Animator:
   serializedVersion: 5

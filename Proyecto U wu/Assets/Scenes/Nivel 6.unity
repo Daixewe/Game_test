@@ -11115,7 +11115,7 @@ MonoBehaviour:
   playerHealth: {fileID: 766862067}
   damage: 1
   scenceBuildIndex: 11
-  vida: 50
+  vida: 90
   velocidadMovimiento: 0.5
   jugador: {fileID: 125356745}
 --- !u!1001 &525513110
