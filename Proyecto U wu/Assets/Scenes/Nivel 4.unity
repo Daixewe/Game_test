@@ -27894,19 +27894,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7951950865513134318, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.48772734
+      value: 0.8200856
       objectReference: {fileID: 0}
     - target: {fileID: 7951950865513134318, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.41477814
+      value: 0.7930583
       objectReference: {fileID: 0}
     - target: {fileID: 7951950865513134318, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.64
+      value: 6.7669
       objectReference: {fileID: 0}
     - target: {fileID: 7951950865513134318, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.37
+      value: -3.9818
       objectReference: {fileID: 0}
     - target: {fileID: 7951950865513134318, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27939,6 +27939,30 @@ PrefabInstance:
     - target: {fileID: 7951950865513134318, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188362318925810522, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6706677
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188362318925810522, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1991172
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188362318925810522, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.06855199
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188362318925810522, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.23377463
+      objectReference: {fileID: 0}
+    - target: {fileID: 8983104204821679052, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8983104204821679052, guid: 4ce38ee1a70e3fa4eaf2814bda583aad, type: 3}
+      propertyPath: MaxHealth
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
